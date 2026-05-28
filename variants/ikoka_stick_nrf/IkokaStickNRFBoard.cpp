@@ -27,6 +27,16 @@ void IkokaStickNRFBoard::begin() {
   digitalWrite(P_LORA_TX_LED, HIGH);
 #endif
 
+#ifdef LED_GREEN
+  pinMode(LED_GREEN, OUTPUT);
+  digitalWrite(LED_GREEN, LOW);   // power/status LED on (active low)
+#endif
+
+#ifdef LED_BLUE
+  pinMode(LED_BLUE, OUTPUT);
+  digitalWrite(LED_BLUE, HIGH);   // TX LED idle off
+#endif
+
 //  pinMode(SX126X_POWER_EN, OUTPUT);
 //  digitalWrite(SX126X_POWER_EN, HIGH);
   delay(10);   // give sx1262 some time to power up

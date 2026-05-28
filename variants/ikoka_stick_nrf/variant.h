@@ -113,8 +113,10 @@ static const uint8_t A5  = PIN_A5;
 // #define PIN_WIRE_SDA            (17) // 4 and 5 are used for the sx1262 !
 // #define PIN_WIRE_SCL            (16) // use WIRE1_SDA
 
+#ifdef __cplusplus
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
+#endif
 
 //#define PIN_WIRE1_SDA           (17)
 //#define PIN_WIRE1_SCL           (16)

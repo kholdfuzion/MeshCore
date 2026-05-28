@@ -18,9 +18,12 @@ AutoDiscoverRTCClock rtc_clock(fallback_clock);
 EnvironmentSensorManager sensors;
 
 bool radio_init() {
-    rtc_clock.begin(Wire);
-  
-    return radio.std_init(&SPI);
+  rtc_clock.begin(Wire);
+#ifdef P_LORA_EN
+  pinMode(P_LORA_EN, OUTPUT);
+  digitalWrite(P_LORA_EN, HIGH);
+#endif
+  return radio.std_init(&SPI);
 }
 
 uint32_t radio_get_rng_seed() {
