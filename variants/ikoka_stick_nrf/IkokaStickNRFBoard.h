@@ -4,12 +4,17 @@
 #include <Arduino.h>
 #include <helpers/NRF52Board.h>
 
+#ifndef USER_BTN_PRESSED
+#define USER_BTN_PRESSED LOW
+#endif
+
 #ifdef XIAO_NRF52
 
 class IkokaStickNRFBoard : public NRF52BoardDCDC {
 public:
   IkokaStickNRFBoard() : NRF52Board("XIAO_NRF52_OTA") {}
   void begin();
+  void powerOff() override;
 
   void onBeforeTransmit() override {
 #if defined(LED_BLUE)
