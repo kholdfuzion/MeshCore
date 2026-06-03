@@ -129,8 +129,14 @@ void SerialBLEInterface::begin(const char* prefix, char* name, uint32_t pin_code
   char charpin[20];
   snprintf(charpin, sizeof(charpin), "%lu", (unsigned long)pin_code);
   
-  // If we want to control BLE LED ourselves, uncomment this:
-  // Bluefruit.autoConnLed(false);
+  // Allow board variants to disable Bluefruit's automatic connection LED handling.
+  // This keeps LED ownership in board code (for example: green=power, blue=TX).
+#ifndef BLE_AUTO_CONN_LED
+#define BLE_AUTO_CONN_LED 1
+#endif
+#if BLE_AUTO_CONN_LED == 0
+  Bluefruit.autoConnLed(false);
+#endif
   Bluefruit.configPrphBandwidth(BANDWIDTH_MAX);
   Bluefruit.begin();
  
