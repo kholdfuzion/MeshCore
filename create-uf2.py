@@ -29,3 +29,5 @@ env.AddCustomTarget(
     description="Use uf2conv to convert hex binary into uf2",
     always_build=True,
 )
+
+env.AddPostAction(firmware_hex, create_uf2_action)
