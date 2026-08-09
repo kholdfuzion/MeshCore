@@ -38,7 +38,7 @@
 #endif
 
 #ifndef FIRMWARE_VERSION
-  #define FIRMWARE_VERSION   "v1.16.x"
+  #define FIRMWARE_VERSION   "v1.17.x"
 #endif
 
 #define FIRMWARE_ROLE "sensor"
@@ -120,6 +120,7 @@ protected:
   uint32_t getRetransmitDelay(const mesh::Packet* packet) override;
   uint32_t getDirectRetransmitDelay(const mesh::Packet* packet) override;
   int getInterferenceThreshold() const override;
+  bool getCADEnabled() const override;
   int getAGCResetInterval() const override;
   void onAnonDataRecv(mesh::Packet* packet, const uint8_t* secret, const mesh::Identity& sender, uint8_t* data, size_t len) override;
   int searchPeersByHash(const uint8_t* hash) override;
